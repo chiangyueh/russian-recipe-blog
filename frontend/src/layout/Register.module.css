@@ -37,4 +37,10 @@
     color: #fff;
     font-size: 20px;
     background-color: blue;
+    cursor: pointer;
+}
+
+.showMsg{
+    display: flex;
+    gap:20px;
 }
