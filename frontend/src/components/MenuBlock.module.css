@@ -1,0 +1,39 @@
+.wrapper{
+    padding-top: 50px;
+}
+
+.img{
+    position: relative;
+    width:360px;
+    height:470px;
+    background: var(--img) no-repeat center;
+}
+
+.content{
+    width:300px;
+    height : 150px;
+    position: absolute;
+    background-color: rgba(0,0,0,0.3);
+    left: 30px;
+    top:-40px;
+    text-align: center;
+    color: #fff;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-overflow: ellipsis;
+    white-space: wrap;
+    overflow:hidden;
+    height:110px;
+}
+
+.tags{
+    text-overflow: ellipsis;
+    white-space: wrap;
+    overflow:hidden;
+    height :22px;
+    text-decoration: underline
+}

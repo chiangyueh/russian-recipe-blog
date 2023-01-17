@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.wrapper{
+    background-color: rgb(249, 225, 196);
+}
+.layout_wrapper{
+    background-color: rgb(240, 233, 233);
+}
+.layout_container{
+    width: 60%;
+    min-height: 100vh;
+    margin: auto;
+    overflow: hidden;
+}

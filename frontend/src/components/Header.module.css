@@ -1,0 +1,43 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    height :60px;
+    margin: auto;
+    font-size: 30px;
+    gap : 30px
+}
+
+.input{
+    width:30%;
+    height :30px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.user{
+    display: flex;
+    gap: 30px;
+}
+
+.homeLink{
+    font-size: 30px;
+    text-decoration: none;
+    color: rgb(216, 93, 17);
+}
+
+.link{
+    font-size: 30px;
+    text-decoration: none;
+    color: rgb(78, 82, 217);
+}
+
+.link:active{
+    font-size: 30px;
+    text-decoration: none;
+    color: rgb(78, 82, 217);
+}
