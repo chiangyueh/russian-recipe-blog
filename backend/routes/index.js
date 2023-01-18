@@ -10,4 +10,7 @@ router.use('/posts',post)
 const edit = require('./modules/edit')
 router.use('/edit',edit)
 
+const search = require('./modules/search')
+router.use('/search',search)
+
 module.exports = router

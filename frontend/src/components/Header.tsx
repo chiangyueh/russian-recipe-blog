@@ -1,18 +1,23 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import styles from "./Header.module.css";
-import { Link ,useNavigate} from "react-router-dom";
-import { BsFillPlusSquareFill } from "react-icons/bs";
+import { Link, useNavigate } from "react-router-dom";
+import { BsFillPlusSquareFill, BsSearch } from "react-icons/bs";
 import addArticle from "../mobx/AddArticle";
-
+import debounce from "../utils/debounce";
 const Header = () => {
-  const [token,setToken] = useState(sessionStorage.getItem('token'))
+  const [token, setToken] = useState(sessionStorage.getItem("token"));
+
   const logOut = () => {
-    sessionStorage.removeItem('token');
-    setToken(null)
-  }
-  const createArticle = () =>{
-    addArticle.open()
-  }
+    sessionStorage.removeItem("token");
+    setToken(null);
+  };
+  const createArticle = () => {
+    addArticle.open();
+  };
+  const Search = (value: string) => {
+    debounce(()=>{console.log(value)})()
+      
+  };
   return (
     <div className={styles.container}>
       <div>
@@ -20,7 +25,10 @@ const Header = () => {
           Соль и Перец
         </Link>
       </div>
-      <input className={styles.input} />
+      <input
+        className={styles.input}
+        onChange={(e) => Search(e.target.value)}
+      />
       <div className={styles.user}>
         {token ? (
           <>

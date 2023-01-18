@@ -2,6 +2,7 @@ import React,{useState,useRef,useEffect} from "react";
 import styles from './Login.module.css'
 import {useNavigate} from 'react-router-dom'
 import { login } from "../api/user";
+import debounce from "../utils/debounce";
 const Login = () => {
   const navigate = useNavigate()
   const [email,setEmail] = useState('')
@@ -12,18 +13,14 @@ const Login = () => {
       navigate(0)
     }
   },[email,password])
-  let throttle : ReturnType<typeof setTimeout>
   const submit =  (e : React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const props = {email,password}
-    clearTimeout(throttle)
-    throttle = setTimeout(()=>{
-        login(props).then(res=>{
-          sessionStorage.setItem('token', res.token)
-          setEmail('')
-          setPassword('')
-        })
-    },1000)
+    debounce(()=>{login(props).then(res=>{
+      sessionStorage.setItem('token', res.token)
+      setEmail('')
+      setPassword('')
+    })})()
   }
   return (
     <div className={styles.wrapper}>
