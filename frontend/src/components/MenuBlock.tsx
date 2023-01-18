@@ -25,8 +25,8 @@ const MenuBlock = (props: Props) => {
           <div className={styles.content}>
             <span className={styles.title}>{title}</span>
             <div className={styles.tagContainer}>
-              {tags.map((res) => (
-                <h3 className={styles.tags}>{res}</h3>
+              {tags.map((res,index) => (
+                <h3 className={styles.tags} key={index}>{res}</h3>
               ))}
             </div>
           </div>

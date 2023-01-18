@@ -13,14 +13,14 @@ const Login = () => {
       navigate(0)
     }
   },[email,password])
+  const deBounce = debounce(()=>{login({email,password}).then(res=>{
+    sessionStorage.setItem('token', res.token)
+    setEmail('')
+    setPassword('')
+  })})
   const submit =  (e : React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const props = {email,password}
-    debounce(()=>{login(props).then(res=>{
-      sessionStorage.setItem('token', res.token)
-      setEmail('')
-      setPassword('')
-    })})()
+    deBounce()
   }
   return (
     <div className={styles.wrapper}>

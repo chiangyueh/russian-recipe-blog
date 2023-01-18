@@ -44,3 +44,4 @@ export const getOne = async(_id : _id) => {
     })
     return data
 }
+

@@ -1,23 +1,47 @@
-import React, { useState } from "react";
+import React, { useState,useRef ,useEffect} from "react";
 import styles from "./Header.module.css";
-import { Link, useNavigate } from "react-router-dom";
-import { BsFillPlusSquareFill, BsSearch } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { BsFillPlusSquareFill } from "react-icons/bs";
 import addArticle from "../mobx/AddArticle";
 import debounce from "../utils/debounce";
+import { getSearch } from "../api/search";
+import searchArticle from "../mobx/SearchArticle";
+import { getAll } from "../api/post";
+import { useNavigate } from "react-router-dom";
 const Header = () => {
   const [token, setToken] = useState(sessionStorage.getItem("token"));
+  const navigate = useNavigate()
+  const value = useRef('')
+  useEffect(()=>{
+    getAll().then(res=>{
+      searchArticle.add(res)})
+  },[])
 
   const logOut = () => {
     sessionStorage.removeItem("token");
     setToken(null);
+    navigate('/')
+    navigate(0)
   };
   const createArticle = () => {
     addArticle.open();
   };
-  const Search = (value: string) => {
-    debounce(()=>{console.log(value)})()
-      
+  const SearchDebounce = debounce(()=>{getSearch(value.current).then(res=>{
+    searchArticle.add(res.data)
+  })})
+  const DefaultSearchDebounce = debounce(()=>{
+    getAll().then(res=>{
+      searchArticle.add(res)})
+  })
+  const Search = (getValue: string) => {
+    value.current = getValue
+    if(value.current === ''){
+      DefaultSearchDebounce()
+    }else{
+      SearchDebounce()
+    }
   };
+  const aa =() =>{console.log(searchArticle.input[0].title)}
   return (
     <div className={styles.container}>
       <div>

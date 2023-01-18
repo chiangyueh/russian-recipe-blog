@@ -38,7 +38,6 @@ module.exports.getOne = async (req,res) => {
         const postId = req.params._id;
         const {token} = req.body.param
         const decoded = jwt.verify(token,"mySecret")
-        console.log(decoded)
         const data = await Post.findOneAndUpdate(
           {
             _id: postId,

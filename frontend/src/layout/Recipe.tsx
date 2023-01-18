@@ -48,8 +48,8 @@ const Recipe = () => {
       <div className={styles.title}>{result.title}</div>
       <div className={styles.info}>
         <span>{result.createdAt.slice(0, 10)}</span>
-        {result.tags.map((res) => (
-          <h3 className={styles.tags}>{res}</h3>
+        {result.tags.map((res,index) => (
+          <h3 className={styles.tags} key={index}>{res}</h3>
         ))}
         <span>Просмотрено : {result.viewsCount}</span>
       </div>
@@ -58,15 +58,16 @@ const Recipe = () => {
           <img src={result.imgUrl} alt='img' className={styles.img}/>
         </div>
         <div className={styles.description}>
-            {recipe.map(res=>(
-                <p>{res}</p>
+            {recipe.map((res,index)=>(
+                <p key={index}>{res}</p>
             ))}
         </div>
       </div>
       <div className={styles.editor}>
-        {auth.current? <div>
+        {auth.current? 
+        (<div>
             <button className={styles.edit} onClick={edit}>Изменить</button>
-        </div> : ''}
+        </div>) : ''}
         <div>Автор : {result.author.userName}</div>
       </div>
     </div>
