@@ -1,5 +1,5 @@
 import React, { useEffect, useState ,useRef} from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { getOne } from "../api/post";
 import styles from "./Recipe.module.css";
 
@@ -20,6 +20,7 @@ interface returnData {
 
 const Recipe = () => {
   const _id = useLocation().pathname.slice(7);
+  const navigate = useNavigate()
   const auth = useRef(false)
   const [result, setResult] = useState<returnData>({
     _id: "",
@@ -39,7 +40,9 @@ const Recipe = () => {
       setResult(res.data);
     });
   }, []);
-  
+  const edit = () => {
+    navigate(`/edit/${_id}`)
+  }
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>{result.title}</div>
@@ -62,7 +65,7 @@ const Recipe = () => {
       </div>
       <div className={styles.editor}>
         {auth.current? <div>
-            <button className={styles.edit}>Изменить</button>
+            <button className={styles.edit} onClick={edit}>Изменить</button>
         </div> : ''}
         <div>Автор : {result.author.userName}</div>
       </div>

@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import { Home, Login, Register } from "./layout";
+import { Home, Login, Register, Recipe, EditRecipe } from "./layout";
 import AddArticle from "./components/AddArticle";
 import addArticle from "./mobx/AddArticle";
-import Recipe from "./layout/Recipe";
+
 import "./App.css";
 const { observer } = require( "mobx-react-lite/lib/index");
 function App() {
@@ -23,6 +23,7 @@ function App() {
             <Route path="/login" element={<Login></Login>} />
             <Route path="/register" element={<Register></Register>}/>
             <Route path='/posts/:_id' element={<Recipe></Recipe>}/>
+            <Route path='/edit/:_id' element={<EditRecipe></EditRecipe>}/>
           </Routes>
         </div>
       </div>
