@@ -5,6 +5,6 @@ const {create, getAll,getOne} = require('../../controller/postController')
 
 router.post('/',checkAuth,create)
 router.get('/',getAll)
-router.get('/posts/:_id',getOne)
+router.post('/posts/:_id',getOne)
 
 module.exports = router

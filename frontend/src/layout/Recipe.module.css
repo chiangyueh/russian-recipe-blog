@@ -38,3 +38,28 @@
 .description{
     width: 50%;
 }
+.editor{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 80%;
+    height: 50px;
+    gap:50px;
+    font-size: 25px;
+}
+
+.edit{
+    font-size: 20px;
+    padding : 10px;
+    color: white;
+    background-color: rgb(174, 21, 21);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.edit:hover{
+    background-color: rgb(174, 21, 21);
+    padding: 13px
+}

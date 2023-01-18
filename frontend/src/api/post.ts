@@ -33,7 +33,14 @@ export const getAll = async() => {
 
 type _id = string
 
+ 
+
 export const getOne = async(_id : _id) => {
-    const {data} = await api.get(`/posts/${_id}`)
+    const token = sessionStorage.getItem('token')
+    const {data} = await api.post(`/posts/${_id}`,{
+        param : {
+            token
+        }
+    })
     return data
 }

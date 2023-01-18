@@ -1,5 +1,5 @@
 const Post = require("../models/post");
-
+const jwt = require('jsonwebtoken')
 module.exports.create = async (req, res) => {
   try {
     const { title, recipe, tags, imgUrl } = req.body.param;
@@ -36,7 +36,10 @@ module.exports.getAll = async (req, res) => {
 module.exports.getOne = async (req,res) => {
     try {
         const postId = req.params._id;
-        Post.findOneAndUpdate(
+        const {token} = req.body.param
+        const decoded = jwt.verify(token,"mySecret")
+        console.log(decoded)
+        const data = await Post.findOneAndUpdate(
           {
             _id: postId,
           },
@@ -46,21 +49,11 @@ module.exports.getOne = async (req,res) => {
           {
             returnDocument: "after",
           },
-          (err, doc) => {
-            if (err) {
-              console.log(err);
-              return res.status(500).json({
-                message: "Не доступна",
-              });
-            }
-            if(!doc){
-                return res.status(404).json({
-                    message : 'Уже удалена'
-                })
-            }
-            res.json(doc)
-          }
-        );
+        ).populate('author').exec();
+        res.json({
+          data,
+          decoded
+        })
       } catch (err) {
         console.log(err);
         res.status(500).json({
