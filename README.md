@@ -1,6 +1,6 @@
 # russian-recipe-blog
-#項目實現
-1.jwt登入、登出功能，bcrypt密碼加鹽
+#項目實現  
+1.jwt登入、登出功能，bcrypt密碼加鹽  
 2.權限驗證(登入者才能發文)  
 3.權限管控(作者才能改文章)  
 4.自定義包裝debounce函數  
