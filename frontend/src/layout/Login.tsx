@@ -4,15 +4,14 @@ import {useNavigate} from 'react-router-dom'
 import { login } from "../api/user";
 const Login = () => {
   const navigate = useNavigate()
-  const [token,setToken] = useState('')
+  const [email,setEmail] = useState('')
+  const [password,setPassword] = useState('')
   useEffect(()=>{
     if(sessionStorage.getItem('token')){
       navigate('/')
       navigate(0)
     }
-  },[token])
-  const [email,setEmail] = useState('')
-  const [password,setPassword] = useState('')
+  },[email,password])
   let throttle : ReturnType<typeof setTimeout>
   const submit =  (e : React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -21,7 +20,8 @@ const Login = () => {
     throttle = setTimeout(()=>{
         login(props).then(res=>{
           sessionStorage.setItem('token', res.token)
-          setToken(res.token)
+          setEmail('')
+          setPassword('')
         })
     },1000)
   }

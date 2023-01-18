@@ -1,21 +1,36 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./MenuBlock.module.css";
-import abc from "../img/a.jpg";
-const MenuBlock = () => {
+
+interface Props {
+  tags: Array<string>;
+  title: string;
+  _id: string;
+  imgUrl: string;
+}
+
+const MenuBlock = (props: Props) => {
+  const { tags, title, _id, imgUrl } = props;
+  const showContent = () => {
+    console.log(123)
+  }
   return (
-    <div className={styles.wrapper}>
-      <div
-        className={styles.img}
-        style={{ "--img": `url(${abc})` } as React.CSSProperties}
-      >
-        <div className={styles.content}>
-            <h1 className={styles.title}>
-                title
-            </h1>
-            <h3 className={styles.tags}>tags </h3>
+      <div className={styles.wrapper}>
+        <div
+          className={styles.img}
+          style={{ "--img": `url(${imgUrl})` } as React.CSSProperties}
+          onClick={showContent}
+        >
+          <div className={styles.content}>
+            <span className={styles.title}>{title}</span>
+            <div className={styles.tagContainer}>
+              {tags.map((res) => (
+                <h3 className={styles.tags}>{res}</h3>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
   );
 };
 

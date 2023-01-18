@@ -41,3 +41,12 @@
     text-decoration: none;
     color: rgb(78, 82, 217);
 }
+
+.BsFillPlusSquareFill{
+    cursor: pointer;
+    color : rgb(148, 75, 217)
+}
+
+.BsFillPlusSquareFill:hover{
+    color:blueviolet
+}

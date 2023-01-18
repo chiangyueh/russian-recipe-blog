@@ -7,6 +7,7 @@
     width:360px;
     height:470px;
     background: var(--img) no-repeat center;
+    cursor: pointer;
 }
 
 .content{
@@ -22,12 +23,20 @@
 
 .title{
     display: flex;
-    align-items: center;
+    align-items:center;
     justify-content: center;
-    text-overflow: ellipsis;
-    white-space: wrap;
-    overflow:hidden;
-    height:110px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    font-size: 30px;
+    height:105px;
+}
+
+.tagContainer{
+    display: flex;
+    justify-content: center;
+    gap:10px
 }
 
 .tags{
@@ -35,5 +44,7 @@
     white-space: wrap;
     overflow:hidden;
     height :22px;
-    text-decoration: underline
+    text-decoration: underline;
+    color: rgb(207, 213, 219);
+
 }
