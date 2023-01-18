@@ -13,7 +13,7 @@ const EditRecipe = () => {
   console.log(_id)
   return (
     <div style={{textAlign:'center',marginTop : '500px', fontSize : '50px'}}>
-        {auth?<div>Можно редактировать</div> : <div>Нельзя редактировать</div>}
+        {auth? <div>Можно редактировать</div> : <div>Нельзя редактировать</div>}
     </div>
   )
 }
