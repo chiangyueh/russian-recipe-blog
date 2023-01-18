@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./MenuBlock.module.css";
 
 interface Props {
@@ -10,9 +10,10 @@ interface Props {
 }
 
 const MenuBlock = (props: Props) => {
+  const navigate = useNavigate()
   const { tags, title, _id, imgUrl } = props;
   const showContent = () => {
-    console.log(123)
+    navigate(`/posts/${_id}`)
   }
   return (
       <div className={styles.wrapper}>

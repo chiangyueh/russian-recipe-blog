@@ -30,3 +30,10 @@ export const getAll = async() => {
     const {data} = await api.get('/')
     return data
 }
+
+type _id = string
+
+export const getOne = async(_id : _id) => {
+    const {data} = await api.get(`/posts/${_id}`)
+    return data
+}

@@ -32,3 +32,39 @@ module.exports.getAll = async (req, res) => {
     });
   }
 };
+
+module.exports.getOne = async (req,res) => {
+    try {
+        const postId = req.params._id;
+        Post.findOneAndUpdate(
+          {
+            _id: postId,
+          },
+          {
+            $inc: { viewsCount: 1 },
+          },
+          {
+            returnDocument: "after",
+          },
+          (err, doc) => {
+            if (err) {
+              console.log(err);
+              return res.status(500).json({
+                message: "Не доступна",
+              });
+            }
+            if(!doc){
+                return res.status(404).json({
+                    message : 'Уже удалена'
+                })
+            }
+            res.json(doc)
+          }
+        );
+      } catch (err) {
+        console.log(err);
+        res.status(500).json({
+          message: "Не доступна",
+        });
+      }
+}
